@@ -1,16 +1,16 @@
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 
-	<div class="site-mobile-menu site-navbar-target">
+	<!-- <div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
 			<div class="site-mobile-menu-close">
 				<span class="icofont-close js-menu-toggle"></span>
 			</div>
 		</div>
 		<div class="site-mobile-menu-body"></div>
-	</div>
+	</div> -->
+  
 
 	<nav class="site-nav">
 		<div class="container">
@@ -607,14 +607,18 @@
 </template>
 
 <script>
-import HelloWorld from './components/pages/HelloWorld.vue'
+// import HelloWorld from './components/pages/HelloWorld.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+// export default {
+//   name: 'App',
+//   components: {
+//     HelloWorld
+//   }
+// }
+
+import * as bootstrap from 'js/bootstrap.bundle.min.js';
+
+
 </script>
 
 <style>

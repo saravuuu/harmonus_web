@@ -1948,7 +1948,9 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #737476;
+  text-align-last: left;
+  padding-left: 20px;
   vertical-align: middle;
   background-color: #fff;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
@@ -1967,6 +1969,7 @@ textarea.form-control-lg {
     box-shadow: 0 0 0 0.25rem rgba(252, 84, 4, 0.25); }
   .form-select[multiple], .form-select[size]:not([size="1"]) {
     padding-right: 0.75rem;
+    text-align-last: right;
     background-image: none; }
   .form-select:disabled {
     color: #6c757d;
@@ -2204,7 +2207,9 @@ textarea.form-control-lg {
     padding-bottom: 0.625rem; }
   .form-floating > .form-select {
     padding-top: 1.625rem;
-    padding-bottom: 0.625rem; }
+    padding-bottom: 0.625rem;
+    padding-left: 20px;
+   }
   .form-floating > .form-control:focus ~ label,
   .form-floating > .form-control:not(:placeholder-shown) ~ label,
   .form-floating > .form-select ~ label {

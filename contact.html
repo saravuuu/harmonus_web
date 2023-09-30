@@ -100,34 +100,63 @@
 			</div>
 			<form class="row">
 
-				<div class="col-md-6 col-lg-6">
+				<div class="col-md-4 col-lg-4">
 					<div class="mb-3">
 						<label for="name" class="ps-3 mb-2">Name</label>
 						<input type="text" class="form-control" id="name">
 					</div>
 				</div>
 
-				<div class="col-md-6 col-lg-6">
+				<div class="col-md-4 col-lg-4">
 					<div class="mb-3">
 						<label for="email" class="ps-3 mb-2">Email</label>
 						<input type="text" class="form-control" id="email">
 					</div>
 				</div>
 
-				<div class="col-md-6 col-lg-6">
+				<div class="col-md-4 col-lg-4">
 					<div class="mb-3">
 						<label for="phone" class="ps-3 mb-2">Phone</label>
-						<input type="text" class="form-control" id="phone">
+						<input type="tel" class="form-control" id="phone">
 					</div>
 				</div>
 
-				<div class="col-md-6 col-lg-6">
+				<div class="col-md-4 col-lg-4">
 					<div class="mb-3">
-						<label for="subject" class="ps-3 mb-2">Subject</label>
-						<input type="text" class="form-control" id="subject">
+						<label for="문의유형" class="ps-3 mb-2">문의 유형</label>
+						<select name="type" class="form-select">
+							<option value="" selected="selected">select</option>
+							<option value="구입 / 견적"> 구입 / 견적 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   purchase / quote</option>
+							<option value="A/S">A/S &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   repair</option>
+							<option value="기타">기타  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   etc.</option>
+						</select>
+					</div>
+					
+				</div>
+
+				<div class="col-md-4 col-lg-4">
+					<div class="mb-3">
+						<label for="알게 된 경로" class="ps-3 mb-2">알게 된 경로</label>
+						<select name="access_route" id="access_route" class="form-select">
+							<option value="" selected="selected">select</option>
+							<option value="기사">기사</option>
+							<option value="박람회">박람회</option>
+							<option value="SNS">SNS</option>
+							<option value="지인 추천">지인 추천</option>
+							<option value="기타">기타</option>
+						</select>
+					</div>
+					
+				</div>
+
+				<div class="col-md-4 col-lg-4" style="display: none;" id="detail">
+					<div class="mb-3">
+						<label for="detail" class="ps-3 mb-2">&nbsp;</label>
+						<input type="text" class="form-control" placeholder="기타 선택 시 추가 입력">
 					</div>
 				</div>
 
+				
 				<div class="col-md-12 col-lg-12">
 					<div class="mb-3">
 						<label for="message" class="ps-3 mb-2">Message</label>
@@ -238,5 +267,26 @@
 	<script src="js/navbar.js"></script>
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
+	<script>
+		// select 박스와 텍스트 상자에 대한 참조를 가져옵니다.
+		var selectBox = document.getElementById("access_route");
+		var detail = document.getElementById("detail");
+		
+		// select 박스의 변경 이벤트를 감지합니다.
+		selectBox.addEventListener("change", function() {
+			// 선택된 값을 가져옵니다.
+			var selectedValue = selectBox.value;
+		
+			// 만약 "기타"가 선택되었다면 텍스트 상자를 보이도록 설정
+			if (selectedValue === "기타") {
+				detail.style.display = "block";
+			} else {
+				// 다른 값이 선택되었다면 텍스트 상자를 숨깁니다.
+				detail.style.display = "none";
+			}
+		});
+		</script>
+		
+		
 </body>
 </html>

@@ -1,13 +1,13 @@
 // scroll to top button
-var scrollToTop = function() {
+const scrollToTop = function() {
     let top = document.querySelector('#top');
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            top.classList.add('active');
+        if (window.scrollY > window.innerHeight) {
+            top.classList.add('display');
         } else {
             // 버튼 사라지게
-            top.classList.remove('active');
+            top.classList.remove('display');
         }
     });
 
@@ -16,3 +16,5 @@ var scrollToTop = function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 };
+
+window.addEventListener("scroll", scrollToTop);

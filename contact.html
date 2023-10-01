@@ -124,14 +124,13 @@
 				<div class="col-md-4 col-lg-4">
 					<div class="mb-3">
 						<label for="문의유형" class="ps-3 mb-2">문의 유형</label>
-						<select name="type" class="form-select">
+						<select name="type" class="form-select" id="type">
 							<option value="" selected="selected">select</option>
-							<option value="구입 / 견적"> 구입 / 견적 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   purchase / quote</option>
-							<option value="A/S">A/S &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   repair</option>
-							<option value="기타">기타  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   etc.</option>
+							<option value="purchase"> 견적/구입 (quote/purchase) </option>
+							<option value="repair">수리 (repair)</option>
+							<option value="etc">기타 etc.</option>
 						</select>
 					</div>
-					
 				</div>
 
 				<div class="col-md-4 col-lg-4">
@@ -160,7 +159,7 @@
 				<div class="col-md-12 col-lg-12">
 					<div class="mb-3">
 						<label for="message" class="ps-3 mb-2">Message</label>
-						<textarea class="form-control" name="" id="message" cols="30" rows="7"></textarea>
+						<textarea class="form-control" name="" id="message" cols="30" rows="10"></textarea>
 					</div>
 				</div>
 
@@ -285,8 +284,32 @@
 				detail.style.display = "none";
 			}
 		});
-		</script>
-		
+	
+		// 문의 유형 선택이 변경될 때 이벤트를 감지하여 default text 설정
+		const typeSelect = document.getElementById('type');
+		const messageTextarea = document.getElementById('message');
+	
+		typeSelect.addEventListener('change', function () {
+			const selectedOption = typeSelect.value;
+	
+			// 선택한 옵션에 따라 default text 설정
+			switch (selectedOption) {
+				case 'purchase':
+					messageTextarea.value = 
+					'제품명:  Tumblinser 또는 Tumblinser X \n주문개수: \n설치할 장소의 유형:            ex. 독서실, 카페, 사무실 등 \n설치 희망일시: YYYY.MM.DD\n통화 가능한 시간대:';
+					break;
+				case 'repair':
+					messageTextarea.value = '수리와 관련된 메시지를 입력해주세요.';
+					break;
+				case 'etc':
+					messageTextarea.value = '기타 문의 사항을 입력해주세요.';
+					break;
+				default:
+					messageTextarea.value = ''; // 선택한 옵션이 없는 경우 빈 문자열로 설정
+					break;
+			}
+		});
+	</script>	
 		
 </body>
 </html>

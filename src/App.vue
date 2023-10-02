@@ -556,11 +556,11 @@
 						<div class="col-6 col-sm-6 col-md-4">
 							<div class="widget">
 								<ul class="links list-unstyled">
-									<li><a href="#">Home</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">Work</a></li>
-									<li><a href="#">Process</a></li>
-									<li><a href="#">About Us</a></li>
+									<li><a href="index.html">Home</a></li>
+									<li><a href="about.html">About</a></li>
+									<li><a href="products.html">Products</a></li>
+									<li><a href="news.html">News</a></li>
+									<li><a href="contact.html">Contact</a></li>
 								</ul>
 							</div>
 						</div>

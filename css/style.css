@@ -9110,7 +9110,8 @@ a {
     font-size: 50px;
     color: #fff;
     /* text-transform: uppercase; */
-    font-weight: bold; }
+    /* font-weight: bold;  */
+  }
     @media (max-width: 767.98px) {
       .hero-2 h1, .hero-2 .h1 {
         font-size: 30px; } }

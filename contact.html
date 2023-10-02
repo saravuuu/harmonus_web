@@ -100,58 +100,76 @@
 			</div>
 			<form class="row">
 
-				<div class="col-md-4 col-lg-4">
+				<div class="col-md-7 col-lg-7">
 					<div class="mb-3">
-						<label for="name" class="ps-3 mb-2">Name</label>
+						<label for="name" class="ps-3 mb-2">Name *</label>
 						<input type="text" class="form-control" id="name">
 					</div>
 				</div>
 
-				<div class="col-md-4 col-lg-4">
+				<div class="col-md-7 col-lg-7">
 					<div class="mb-3">
-						<label for="email" class="ps-3 mb-2">Email</label>
+						<label for="email" class="ps-3 mb-2">Email *</label>
 						<input type="text" class="form-control" id="email">
 					</div>
 				</div>
 
-				<div class="col-md-4 col-lg-4">
+				<div class="col-md-5 col-lg-5">
 					<div class="mb-3">
 						<label for="phone" class="ps-3 mb-2">Phone</label>
 						<input type="tel" class="form-control" id="phone">
 					</div>
 				</div>
 
-				<div class="col-md-4 col-lg-4">
+				<div class="col-md-7 col-lg-7">
 					<div class="mb-3">
-						<label for="문의유형" class="ps-3 mb-2">문의 유형</label>
-						<select name="type" class="form-select" id="type">
+						<label for="subject" class="ps-3 mb-2">Subject *</label>
+						<select name="subject" class="form-select" id="subject">
 							<option value="" selected="selected">select</option>
-							<option value="purchase"> 견적/구입 (quote/purchase) </option>
-							<option value="repair">수리 (repair)</option>
-							<option value="etc">기타 etc.</option>
+							<option value="purchase"> 견적/구입 </option>
+							<option value="repair">수리</option>
+							<option value="etc">기타</option>
 						</select>
 					</div>
 				</div>
 
-				<div class="col-md-4 col-lg-4">
+				<div class="col-md-5 col-lg-5" style="display: none;" id="model">
+					<div class="mb-3">
+						<label for="model" class="ps-3 mb-2">제품 모델명 *</label>
+						<select name="type" class="form-select" id="modelVal">
+							<option value="" selected="selected">select</option>
+							<option value="tumblinser"> Tumblinser </option>
+							<option value="tumblinserX"> Tumblinser X </option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-7 col-lg-7" style="display: none;" id="address">
+					<div class="mb-3">
+						<label for="address_val" class="ps-3 mb-2">제품 사용 주소</label>
+						<input type="text" class="form-control" id="address_val">
+					</div>		
+				</div>
+
+
+				<div class="col-md-7 col-lg-7" style="display: none;" id="access_route">
 					<div class="mb-3">
 						<label for="알게 된 경로" class="ps-3 mb-2">알게 된 경로</label>
-						<select name="access_route" id="access_route" class="form-select">
+						<select name="access_route_val" id="access_route_val" class="form-select">
 							<option value="" selected="selected">select</option>
 							<option value="기사">기사</option>
 							<option value="박람회">박람회</option>
 							<option value="SNS">SNS</option>
 							<option value="지인 추천">지인 추천</option>
-							<option value="기타">기타</option>
+							<option value="직접입력">직접 입력</option>
 						</select>
-					</div>
-					
+					</div>		
 				</div>
 
-				<div class="col-md-4 col-lg-4" style="display: none;" id="detail">
+				<div class="col-md-5 col-lg-5" style="display: none;" id="detail">
 					<div class="mb-3">
 						<label for="detail" class="ps-3 mb-2">&nbsp;</label>
-						<input type="text" class="form-control" placeholder="기타 선택 시 추가 입력">
+						<input type="text" class="form-control" placeholder="입력하세요">
 					</div>
 				</div>
 
@@ -177,21 +195,18 @@
 		<div class="container">
 
 			<div class="row justify-content-between">
-				<div class="col-lg-4">
+				<div class="col-lg-5">
 					<div class="widget">
-						<h3 class="line-top">About</h3>
-						<p class="mb-5">Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam. Separated they live.</p>
-
-					</div>
-					<div class="widget">
-						<h3 class="line-top">Connect with us</h3>
-						<ul class="social list-unstyled mb-5">
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-dribbble"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
-						</ul>
+						<h3 class="line-top">Harmonus</h3>
+						<p class="mb-5">
+							대표자 : 이사라 <br>
+							사업자등록번호: 743-61-00485 <br>
+							주소 : 인천광역시 남동구 은봉로 297, 3층 청년창업지원센터 313호 <br>
+							이메일 : sara@harmonuslab.com <br><br>
+							<a href="https://www.instagram.com/tumblinser/"><span class="icon-instagram"></span></a>
+						</p>
+						
+						
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -204,15 +219,15 @@
 						<div class="col-6 col-sm-6 col-md-4">
 							<div class="widget">
 								<ul class="links list-unstyled">
-									<li><a href="#">Home</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">Work</a></li>
-									<li><a href="#">Process</a></li>
-									<li><a href="#">About Us</a></li>
+									<li><a href="index.html">Home</a></li>
+									<li><a href="about.html">About</a></li>
+									<li><a href="products.html">Products</a></li>
+									<li><a href="news.html">News</a></li>
+									<li><a href="contact.html">Contact</a></li>
 								</ul>
 							</div>
 						</div>
-						<div class="col-6 col-sm-6 col-md-4">
+						<!-- <div class="col-6 col-sm-6 col-md-4">
 							<div class="widget">
 								<ul class="links list-unstyled">
 									<li><a href="#">Press</a></li>
@@ -233,15 +248,16 @@
 									<li><a href="#">About Us</a></li>
 								</ul>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
 
 			<div class="row justify-content-center text-center copyright">
-				<div class="col-md-8">
-					<p class="small text-black-50">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+				<div class="col-md-3">
+					<p class="small text-black-50">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ --> <br> <a href="https://github.com/RohMinji">minji Roh</a>
 					</p>
+					
 				</div>
 			</div>
 		</div>
@@ -267,17 +283,17 @@
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
 	<script>
-		// select 박스와 텍스트 상자에 대한 참조를 가져옵니다.
-		var selectBox = document.getElementById("access_route");
+		// access_route select 박스와 텍스트 상자에 대한 참조를 가져옵니다.
+		var accessRouteVal = document.getElementById("access_route_val");
 		var detail = document.getElementById("detail");
 		
-		// select 박스의 변경 이벤트를 감지합니다.
-		selectBox.addEventListener("change", function() {
+		// access_route select 박스의 변경 이벤트를 감지합니다.
+		accessRouteVal.addEventListener("change", function() {
 			// 선택된 값을 가져옵니다.
-			var selectedValue = selectBox.value;
+			var selectedValue = accessRouteVal.value;
 		
-			// 만약 "기타"가 선택되었다면 텍스트 상자를 보이도록 설정
-			if (selectedValue === "기타") {
+			// 만약 "직접입력"가 선택되었다면 텍스트 상자를 보이도록 설정
+			if (selectedValue === "직접입력") {
 				detail.style.display = "block";
 			} else {
 				// 다른 값이 선택되었다면 텍스트 상자를 숨깁니다.
@@ -286,26 +302,39 @@
 		});
 	
 		// 문의 유형 선택이 변경될 때 이벤트를 감지하여 default text 설정
-		const typeSelect = document.getElementById('type');
+		const subjectSelect = document.getElementById('subject');
+		const modelSelect = document.getElementById('model');
+		const accessSelect = document.getElementById('access_route');
+		const addressTextarea = document.getElementById('address');
 		const messageTextarea = document.getElementById('message');
+
 	
-		typeSelect.addEventListener('change', function () {
-			const selectedOption = typeSelect.value;
+		subjectSelect.addEventListener('change', function () {
+			const selectedOption = subjectSelect.value;
 	
 			// 선택한 옵션에 따라 default text 설정
 			switch (selectedOption) {
 				case 'purchase':
 					messageTextarea.value = 
-					'제품명:  Tumblinser 또는 Tumblinser X \n주문개수: \n설치할 장소의 유형:            ex. 독서실, 카페, 사무실 등 \n설치 희망일시: YYYY.MM.DD\n통화 가능한 시간대:';
+					'설치할 장소의 유형(ex. 독서실, 카페, 사무실 등):\n설치 희망일시: YYYY.MM.DD\n통화 가능한 시간대:\n주문 개수: \n기타 문의 사항:';
+					modelSelect.style.display = "block";
+					accessSelect.style.display = "block";
 					break;
 				case 'repair':
-					messageTextarea.value = '수리와 관련된 메시지를 입력해주세요.';
+					messageTextarea.placeholder = '제품의 상태를 자세히 적어주세요.';
+					modelSelect.style.display = "block";
+					accessSelect.style.display = "none";
+					addressTextarea.style.display = "block";
 					break;
 				case 'etc':
-					messageTextarea.value = '기타 문의 사항을 입력해주세요.';
+					messageTextarea.placeholder = '기타 문의 사항을 입력해주세요.';
+					modelSelect.style.display = "none";
+					accessSelect.style.display = "block";
+					addressTextarea.style.display = "none";
 					break;
 				default:
 					messageTextarea.value = ''; // 선택한 옵션이 없는 경우 빈 문자열로 설정
+					accessSelect.style.display = "none";
 					break;
 			}
 		});

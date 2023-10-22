@@ -49,9 +49,12 @@
 			margin-bottom: 10rem;
 		}
 		h3{
-			font-size: calc(1.0rem + 0.6vw);
-			
+			font-size: calc(1.0rem + 0.6vw);	
 		}
+
+		.row > * {
+    		padding-left: calc(var(--bs-gutter-x));
+}
 	</style>
 </head>
 <body>
@@ -123,9 +126,6 @@
 				<div class="col-lg-6">
 					<h2 class="heading">Description</h2>
 				</div>
-				<!-- <div class="col-lg-6 ms-auto">
-					<p>Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque.</p>
-				</div> -->
 			</div>
 			<div class="row g-1 gif-fluid border-left">
 				<div class="row mb-5 justify-content-between">
@@ -175,7 +175,7 @@
 				</div>
 			</div>
 			<div class="description" style="margin-bottom: 25rem;">
-				<h2><b>Tumblinser</b>의 <b class="highlight">POINT</b></h2>
+				<h2><b>Tumblinser</b>의 <b class="highlight">POINT</b> !</h2>
 			</div>
 			<div class="row g-4 gif-fluid">
 				<div class="row mb-5 justify-content-between">
@@ -219,29 +219,27 @@
 							<br>60초 집중 살균</h3> 
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-9" style="text-align: right;">
-						<p class="lead" style="margin-top: 8.5rem; margin-right: 8em;">세척 후엔 UV-C LED의 강력한 자외선으로 혹시 모를 세균도 깨끗하게!</p>
+					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9" style="text-align: right;">
+						<p class="lead" style="margin-top: 8.5rem; margin-right: 4em;">세척 후엔 UV-C LED의 강력한 자외선으로 혹시 모를 세균도 깨끗하게!</p>
 					</div>
 				</div>
 			</div>
 			<div class="row g-4 gif-fluid">
-				
-				<div class="row mb-5 justify-content-between">
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align: center;">
+				<div class="row mb-5 justify-content-between" id="myDiv">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 switchOrder" style="text-align: center;">
 						<p class="lead">Before</p>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align: center;">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 switchOrder"  style="text-align: center;">
 						<p class="lead">After</p>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-5 col-lg-6" style="text-align: center;">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 switchOrder" style="text-align: center;">
 						<img src="images/test_before.jpg" alt="살균 전" class="img-fluid">
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-5 col-lg-6" style="text-align: center;">
+					
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 switchOrder" style="text-align: center;">
 						<img src="images/test_after.jpg" alt="살균 후" class="img-fluid">
 					</div>
-					
 				</div>
-				
 			</div>
 			
 			<div class="row g-4 gif-fluid">
@@ -260,18 +258,18 @@
 				</div>
 			</div>
 			<div class="row g-1 img-fluid">
-				<div class="row mb-5">
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align: center;">
+				<div class="row mb-5" id="myDiv2">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 switchOrder" style="text-align: center;">
 						<p class="lead">tumblinser 사용 중</p>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align: center;">
-						<p class="lead">자외선 소독 종료 전 컵을 제거한 후</p>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 switchOrder" style="text-align: center;">
+						<p class="lead">컵을 제거하여 LED 전원 차단</p>
 					</div>
-					<div class="col-xs-12 col-sm-9 col-md-8 col-lg-6">
-						<img src="images/point3_1.png" alt="세척 전 컵에 음료가 묻어있는 사진" class="img-fluid">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 switchOrder">
+						<img src="images/point3_1.png" alt="텀블린서를 사용 중인 사진" class="img-fluid">
 					</div>
-					<div class="col-xs-12 col-sm-9 col-md-8 col-lg-6" style="align-content: right";>
-						<img src="images/point3_2.png" alt="세척 후 말끔하게 음료가 닦인 사진" class="img-fluid">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 switchOrder" style="align-content: right";>
+						<img src="images/point3_2.png" alt="임의로 컵을 치운 후 텀블린서가 소독을 자동으로 종료한 사진" class="img-fluid">
 					</div>
 				</div>
 				<div class="row" style="text-align: center; margin-top: 5rem;">
@@ -350,25 +348,26 @@
 				</div>
 				<div class="col-lg-5">
 					<div class="heading">Detail</div>
-					<p>Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque.</p>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae placeat, unde sequi quas ipsum illo? Commodi accusantium, sit eveniet? Maiores tempora corporis ea nostrum magnam similique optio autem, dolor incidunt?</p>
-					<p>Recusandae quam dicta repellat consequatur, facilis magnam minus unde, asperiores voluptatibus temporibus obcaecati, nihil libero. Maxime consectetur asperiores excepturi quidem deleniti, autem incidunt? Error nisi, eius fugiat expedita quia cupiditate!</p>
+					<p>작고 아담한 사이즈의 Tumblinser는 설치하기 위해 많은 공간이 필요한 건 아니지만 강력한 세척력과 소독 기능을 가졌습니다.</p>
+					<p>Tumblinser의 깔끔한 디자인은 당신의 공간의 어디에나 잘 어울리며 매트한 블랙 색상으로 얼룩에 강합니다.</p>
+					<p>Tumblinser는 당신의 공간에 어울어져 당신의 공간을 사용하는 사람들로 하여금 자꾸만 지구와 환경을 사랑하게 할 것입니다.</p>
 					<!-- <p><a href="#" class="btn btn-primary">Visit Website</a></p> -->
-					
+					<input type="button" value="Contact" onclick="location.href='contact.html'" class="btn btn-primary">
 				</div>
+
 			</div>
 			<div class="row">
 				<div class="col-sm-3 border-left">
-					<span class="text-black-50 d-block">Work year:</span>  2020
+					<span class="text-black-50 d-block">Width:</span> 325 mm
 				</div>
 				<div class="col-sm-3 border-left">
-					<span class="text-black-50 d-block">Client:</span> XYZ Inc.
+					<span class="text-black-50 d-block">Length:</span> 162 mm
 				</div>
 				<div class="col-sm-3 border-left">
-					<span class="text-black-50 d-block">Started:</span> 25 Jan 2020
+					<span class="text-black-50 d-block">Height:</span> 186 mm
 				</div>
 				<div class="col-sm-3 border-left">
-					<span class="text-black-50 d-block">Finished:</span> 02 Dec 2020
+					<span class="text-black-50 d-block">Weight:</span> 2.9 kg
 				</div>
 			</div>			
 		</div>
@@ -468,5 +467,40 @@
 	<script src="js/navbar.js"></script>
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
+	<script>
+		function reorderElements() {
+			const container1 = document.getElementById('myDiv');
+			const switchOrderElements1 = container1.querySelectorAll('.switchOrder');
+			const container2 = document.getElementById('myDiv2');
+			const switchOrderElements2 = container2.querySelectorAll('.switchOrder');
+			console.log(innerWidth);
+			if ( innerWidth >= 768) {
+				// 순서 변경: Before -> After -> Image(Before) -> Image(After)
+				container1.appendChild(switchOrderElements1[0]);
+				container1.appendChild(switchOrderElements1[1]);
+				container1.appendChild(switchOrderElements1[2]);
+				container1.appendChild(switchOrderElements1[3]);
+
+				container2.appendChild(switchOrderElements2[0]);
+				container2.appendChild(switchOrderElements2[1]);
+				container2.appendChild(switchOrderElements2[2]);
+				container2.appendChild(switchOrderElements2[3]);
+			} else {
+				// 순서 변경을 초기 상태로 복원: Before -> Image(Before) -> After -> Image(After)
+				container1.appendChild(switchOrderElements1[0]);
+				container1.appendChild(switchOrderElements1[2]);
+				container1.appendChild(switchOrderElements1[1]);
+				container1.appendChild(switchOrderElements1[3]);
+
+				container2.appendChild(switchOrderElements2[0]);
+				container2.appendChild(switchOrderElements2[2]);
+				container2.appendChild(switchOrderElements2[1]);
+				container2.appendChild(switchOrderElements2[3]);
+			}
+		}
+		// 페이지 로드 시와 창 크기 변경 시에 순서 변경 함수 호출
+		window.addEventListener('load', reorderElements);
+		window.addEventListener('resize', reorderElements, console.log('resize'));
+	</script>
 </body>
 </html>

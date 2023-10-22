@@ -150,3 +150,18 @@
 	});
 
 })()
+
+function adjustElementOrder() {
+	const myDiv = document.getElementById("myDiv");
+	const screenWidth = window.innerWidth;
+
+	if (screenWidth > 991) { // 화면 너비가 768px 이상인 경우 (데스크톱 화면)
+		const paragraphs = Array.from(myDiv.querySelectorAll("div"));
+		paragraphs.reverse(); // 역순으로 요소를 배열합니다.
+
+		// 역순으로 된 요소들을 다시 myDiv에 추가합니다.
+		paragraphs.forEach(paragraph => {
+		myDiv.appendChild(paragraph);
+		});
+	}
+}

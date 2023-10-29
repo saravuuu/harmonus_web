@@ -103,14 +103,14 @@
 				<div class="col-md-7 col-lg-7">
 					<div class="mb-3">
 						<label for="name" class="ps-3 mb-2">Name *</label>
-						<input type="text" class="form-control" id="name">
+						<input type="text" class="form-control" id="name" required>
 					</div>
 				</div>
 
 				<div class="col-md-7 col-lg-7">
 					<div class="mb-3">
 						<label for="email" class="ps-3 mb-2">Email *</label>
-						<input type="text" class="form-control" id="email">
+						<input type="text" class="form-control" id="email" required>
 					</div>
 				</div>
 
@@ -124,19 +124,19 @@
 				<div class="col-md-7 col-lg-7">
 					<div class="mb-3">
 						<label for="subject" class="ps-3 mb-2">Subject *</label>
-						<select name="subject" class="form-select" id="subject">
+						<select name="subject" class="form-select" id="subject" required>
 							<option value="" selected="selected">select</option>
-							<option value="purchase"> 견적/구입 </option>
-							<option value="repair">수리</option>
-							<option value="etc">기타</option>
+							<option value="견적/구입"> 견적/구입 </option>
+							<option value="수리">수리</option>
+							<option value="기타">기타</option>
 						</select>
 					</div>
 				</div>
 
-				<div class="col-md-5 col-lg-5" style="display: none;" id="model">
+				<div class="col-md-5 col-lg-5" style="display: none;" id="product_nm">
 					<div class="mb-3">
-						<label for="model" class="ps-3 mb-2">제품 모델명 *</label>
-						<select name="type" class="form-select" id="modelVal">
+						<label for="product_nm" class="ps-3 mb-2">제품 모델명 *</label>
+						<select name="type" class="form-select" id="product_nm" required>
 							<option value="" selected="selected">select</option>
 							<option value="tumblinser"> Tumblinser </option>
 							<option value="tumblinserX"> Tumblinser X </option>
@@ -152,10 +152,10 @@
 				</div>
 
 
-				<div class="col-md-7 col-lg-7" style="display: none;" id="access_route">
+				<div class="col-md-7 col-lg-7" style="display: none;" id="inflow_channel">
 					<div class="mb-3">
 						<label for="알게 된 경로" class="ps-3 mb-2">알게 된 경로</label>
-						<select name="access_route_val" id="access_route_val" class="form-select">
+						<select name="inflow_channel" id="inflow_channel" class="form-select">
 							<option value="" selected="selected">select</option>
 							<option value="기사">기사</option>
 							<option value="박람회">박람회</option>
@@ -182,7 +182,7 @@
 				</div>
 
 				<div class="col-md-12">
-					<input type="submit" value="Send message" class="btn btn-primary">
+					<input type="submit" value="Send message" class="btn btn-primary" onclick="sendEmail()">
 				</div>
 
 			</form>
@@ -282,15 +282,23 @@
 	<script src="js/navbar.js"></script>
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
+	<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+	</script>
+	<script type="text/javascript">
+		(function(){
+		   emailjs.init("Twps5pj0HdymR6d26");
+		})();
+	 </script>
 	<script>
-		// access_route select 박스와 텍스트 상자에 대한 참조를 가져옵니다.
-		var accessRouteVal = document.getElementById("access_route_val");
+		// inflow_channel select 박스와 텍스트 상자에 대한 참조를 가져옵니다.
+		var inflowChannel = document.getElementById("inflow_channel");
 		var detail = document.getElementById("detail");
 		
-		// access_route select 박스의 변경 이벤트를 감지합니다.
-		accessRouteVal.addEventListener("change", function() {
+		// inflow_channel select 박스의 변경 이벤트를 감지합니다.
+		inflowChannel.addEventListener("change", function() {
 			// 선택된 값을 가져옵니다.
-			var selectedValue = accessRouteVal.value;
+			var selectedValue = inflowChannel.value;
 		
 			// 만약 "직접입력"가 선택되었다면 텍스트 상자를 보이도록 설정
 			if (selectedValue === "직접입력") {
@@ -303,8 +311,8 @@
 	
 		// 문의 유형 선택이 변경될 때 이벤트를 감지하여 default text 설정
 		const subjectSelect = document.getElementById('subject');
-		const modelSelect = document.getElementById('model');
-		const accessSelect = document.getElementById('access_route');
+		const productNmSelect = document.getElementById('product_nm');
+		const inflowSelect = document.getElementById('inflow_channel');
 		const addressTextarea = document.getElementById('address');
 		const messageTextarea = document.getElementById('message');
 
@@ -314,30 +322,53 @@
 	
 			// 선택한 옵션에 따라 default text 설정
 			switch (selectedOption) {
-				case 'purchase':
+				case '견적/구입':
 					messageTextarea.value = 
 					'설치할 장소의 유형(ex. 독서실, 카페, 사무실 등):\n설치 희망일시: YYYY.MM.DD\n통화 가능한 시간대:\n주문 개수: \n기타 문의 사항:';
-					modelSelect.style.display = "block";
-					accessSelect.style.display = "block";
+					productNmSelect.style.display = "block";
+					productNmSelect.ariaRequired = true;
+					inflowSelect.style.display = "block";
 					break;
-				case 'repair':
+				case '수리':
 					messageTextarea.placeholder = '제품의 상태를 자세히 적어주세요.';
-					modelSelect.style.display = "block";
-					accessSelect.style.display = "none";
+					productNmSelect.style.display = "block";
+					inflowSelect.style.display = "none";
 					addressTextarea.style.display = "block";
 					break;
-				case 'etc':
+				case '기타':
 					messageTextarea.placeholder = '기타 문의 사항을 입력해주세요.';
-					modelSelect.style.display = "none";
-					accessSelect.style.display = "block";
+					productNmSelect.style.display = "none";
+					inflowSelect.style.display = "block";
 					addressTextarea.style.display = "none";
 					break;
 				default:
 					messageTextarea.value = ''; // 선택한 옵션이 없는 경우 빈 문자열로 설정
-					accessSelect.style.display = "none";
+					inflowSelect.style.display = "none";
 					break;
 			}
 		});
+
+		const sendEmail = () => {
+        emailjs.init('Twps5pj0HdymR6d26');
+        let templateParams  = {
+			subject: document.getElementById('subject').value,
+            name : document.getElementById('name').value,
+            phone : document.getElementById('phone').value,
+            email : document.getElementById('email').value,
+            product_nm : document.getElementById('product_nm').value,
+			address : document.getElementById('address').value,
+            message : document.getElementById('message').value,
+            inflow_channel : document.getElementById('inflow_channel').value,
+        }
+        console.log(templateParams);
+        emailjs.send('service_6210egl', 'template_miidnah', templateParams).then(function(response){
+            console.log('Success!', response.status, response.text);
+            setStatus('success');
+        }, function(error){
+            console.log('Failed...', error);
+            setStatus('fail');
+        })
+    }
 	</script>	
 		
 </body>

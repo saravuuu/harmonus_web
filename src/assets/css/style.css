@@ -4529,7 +4529,9 @@ textarea.form-control-lg {
   padding: 0.75rem; }
 
 .modal-open {
-  overflow: hidden; }
+  overflow: hidden;
+  width: 20rem;
+   }
   .modal-open .modal {
     overflow-x: hidden;
     overflow-y: auto; }
@@ -4547,7 +4549,6 @@ textarea.form-control-lg {
 
 .modal-dialog {
   position: relative;
-  width: auto;
   margin: 0.5rem;
   pointer-events: none; }
   .modal.fade .modal-dialog {
@@ -4642,14 +4643,16 @@ textarea.form-control-lg {
 
 .modal-title {
   margin-bottom: 0;
-  line-height: 1.5; }
+  line-height: 1.5;
+  width: 20rem; }
 
 .modal-body {
   position: relative;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 1rem; }
+  padding: 1rem;
+  width: 20rem; }
 
 .modal-footer {
   display: -webkit-box;
@@ -4682,6 +4685,7 @@ textarea.form-control-lg {
 @media (min-width: 576px) {
   .modal-dialog {
     max-width: 500px;
+    min-width: 200px;
     margin: 1.75rem auto; }
   .modal-dialog-scrollable {
     height: calc(100% - 3.5rem); }

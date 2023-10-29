@@ -135,8 +135,8 @@
 
 				<div class="col-md-5 col-lg-5" style="display: none;" id="product_nm">
 					<div class="mb-3">
-						<label for="product_nm" class="ps-3 mb-2">제품 모델명 *</label>
-						<select name="type" class="form-select" id="product_nm" required>
+						<label for="product_nm_val" class="ps-3 mb-2">제품 모델명 *</label>
+						<select class="form-select" id="product_nm_val" required>
 							<option value="" selected="selected">select</option>
 							<option value="tumblinser"> Tumblinser </option>
 							<option value="tumblinserX"> Tumblinser X </option>
@@ -155,7 +155,7 @@
 				<div class="col-md-7 col-lg-7" style="display: none;" id="inflow_channel">
 					<div class="mb-3">
 						<label for="알게 된 경로" class="ps-3 mb-2">알게 된 경로</label>
-						<select name="inflow_channel" id="inflow_channel" class="form-select">
+						<select name="inflow_channel_val" id="inflow_channel_val" class="form-select">
 							<option value="" selected="selected">select</option>
 							<option value="기사">기사</option>
 							<option value="박람회">박람회</option>
@@ -169,7 +169,7 @@
 				<div class="col-md-5 col-lg-5" style="display: none;" id="detail">
 					<div class="mb-3">
 						<label for="detail" class="ps-3 mb-2">&nbsp;</label>
-						<input type="text" class="form-control" placeholder="입력하세요">
+						<input type="text" class="form-control" placeholder="입력하세요" id="detail_val">
 					</div>
 				</div>
 
@@ -177,19 +177,40 @@
 				<div class="col-md-12 col-lg-12">
 					<div class="mb-3">
 						<label for="message" class="ps-3 mb-2">Message</label>
-						<textarea class="form-control" name="" id="message" cols="30" rows="10"></textarea>
+						<textarea class="form-control" name="message" id="message" cols="30" rows="10"></textarea>
 					</div>
 				</div>
 
 				<div class="col-md-12">
-					<input type="submit" value="Send message" class="btn btn-primary" onclick="sendEmail()">
+					<!-- <input type="submit" value="Send message" class="btn btn-primary" onclick="sendEmail()"> -->
+					<!-- <button class="btn btn-primary" id="confirm_button">Send Message</button> 
+					 -->
 				</div>
 
 			</form>
+			<dialog class="modal-open">	
+				<div class="modal-header">
+					<div class="modal-title">문의 내용 확인 </div>
+					<button class="btn-close"></button>			
+				</div>	
+				<div class="modal-body">
+    				name: <b><a id="name_modal"></a></b><br>
+					email: <b><a id="email_modal"></a></b><br>
+					phone: <b><a id="phone_modal"></a></b><br>
+    				subject: <b><a id="subject_modal"></a></b><br>
+					제품 모델명: <b><a id="product_nm_modal"></a></b><br>
+    				address: <b><a id="address_modal"></a></b><br>
+					message: <b><p id="message_modal"></p></b>
+    				알게된 경로: <b><a id="inflow_channel_modal"></a> - <a id="detail_modal"></a></b>
+				</div>			
+				<div class="modal-footer">	
+					<!-- <button>확인</button> -->
+					<input type="submit" value="확인" class="btn btn-primary" onclick="sendEmail();">
+				</div>	
+			</dialog>
+			<button class="confirm btn btn-primary">Send Message</button>
 		</div>
 	</div>
-	
-	
 
 	<div class="site-footer bg-light">
 		<div class="container">
@@ -227,28 +248,7 @@
 								</ul>
 							</div>
 						</div>
-						<!-- <div class="col-6 col-sm-6 col-md-4">
-							<div class="widget">
-								<ul class="links list-unstyled">
-									<li><a href="#">Press</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Contact</a></li>
-									<li><a href="#">Support</a></li>
-									<li><a href="#">Privacy</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-6 col-sm-6 col-md-4">
-							<div class="widget">
-								<ul class="links list-unstyled">
-									<li><a href="#">Privacy</a></li>
-									<li><a href="#">FAQ</a></li>
-									<li><a href="#">Careers</a></li>
-									<li><a href="#">Process</a></li>
-									<li><a href="#">About Us</a></li>
-								</ul>
-							</div>
-						</div> -->
+					
 					</div>
 				</div>
 			</div>
@@ -292,13 +292,13 @@
 	 </script>
 	<script>
 		// inflow_channel select 박스와 텍스트 상자에 대한 참조를 가져옵니다.
-		var inflowChannel = document.getElementById("inflow_channel");
+		var inflowChannelVal = document.getElementById("inflow_channel_val");
 		var detail = document.getElementById("detail");
 		
 		// inflow_channel select 박스의 변경 이벤트를 감지합니다.
-		inflowChannel.addEventListener("change", function() {
+		inflowChannelVal.addEventListener("change", function() {
 			// 선택된 값을 가져옵니다.
-			var selectedValue = inflowChannel.value;
+			var selectedValue = inflowChannelVal.value;
 		
 			// 만약 "직접입력"가 선택되었다면 텍스트 상자를 보이도록 설정
 			if (selectedValue === "직접입력") {
@@ -309,6 +309,7 @@
 			}
 		});
 	
+
 		// 문의 유형 선택이 변경될 때 이벤트를 감지하여 default text 설정
 		const subjectSelect = document.getElementById('subject');
 		const productNmSelect = document.getElementById('product_nm');
@@ -323,10 +324,11 @@
 			// 선택한 옵션에 따라 default text 설정
 			switch (selectedOption) {
 				case '견적/구입':
-					messageTextarea.value = 
-					'설치할 장소의 유형(ex. 독서실, 카페, 사무실 등):\n설치 희망일시: YYYY.MM.DD\n통화 가능한 시간대:\n주문 개수: \n기타 문의 사항:';
+					messageTextarea.placeholder = '견적/구입과 관련하여 궁금한 점을 편하게 적어주세요.';
+					// messageTextarea.value = 
+					// '설치할 장소의 유형(ex. 독서실, 카페, 사무실 등):\n설치 희망일시: YYYY.MM.DD\n통화 가능한 시간대:\n주문 개수: \n기타 문의 사항:';
 					productNmSelect.style.display = "block";
-					productNmSelect.ariaRequired = true;
+					//productNmSelect.ariaRequired = true;
 					inflowSelect.style.display = "block";
 					break;
 				case '수리':
@@ -347,28 +349,53 @@
 					break;
 			}
 		});
+		
 
 		const sendEmail = () => {
-        emailjs.init('Twps5pj0HdymR6d26');
-        let templateParams  = {
-			subject: document.getElementById('subject').value,
-            name : document.getElementById('name').value,
-            phone : document.getElementById('phone').value,
-            email : document.getElementById('email').value,
-            product_nm : document.getElementById('product_nm').value,
-			address : document.getElementById('address').value,
-            message : document.getElementById('message').value,
-            inflow_channel : document.getElementById('inflow_channel').value,
-        }
-        console.log(templateParams);
-        emailjs.send('service_6210egl', 'template_miidnah', templateParams).then(function(response){
-            console.log('Success!', response.status, response.text);
-            setStatus('success');
-        }, function(error){
-            console.log('Failed...', error);
-            setStatus('fail');
-        })
-    }
+			emailjs.init('Twps5pj0HdymR6d26');
+			let templateParams  = {
+				subject: document.getElementById('subject').value,
+				name : document.getElementById('name').value,
+				phone : document.getElementById('phone').value,
+				email : document.getElementById('email').value,
+				product_nm : document.getElementById('product_nm_val').value,
+				address : document.getElementById('address').value,
+				message : document.getElementById('message').value,
+				inflow_channel : document.getElementById('inflow_channel_val').value,
+				detail : document.getElementById('detail_val').value,
+			}
+			console.log(templateParams);
+			emailjs.send('service_6210egl', 'template_miidnah', templateParams).then(function(response){
+				//console.log('Success!', response.status, response.text);
+				// setStatus('success');
+			}, function(error){
+				//console.log('Failed...', error);
+				// setStatus('fail');
+			})
+			dialog.close();
+			location.reload();
+			alert("문의가 정상적으로 접수되었습니다.");
+		}
+
+		const dialog = document.querySelector("dialog");
+		// "Show the dialog" button opens the dialog modally
+		document.querySelector(".confirm").addEventListener("click", () => {
+			document.getElementById("subject_modal").textContent = document.getElementById('subject').value;
+			document.getElementById("name_modal").textContent = document.getElementById('name').value;
+			document.getElementById("phone_modal").textContent = document.getElementById('phone').value;
+			document.getElementById("email_modal").textContent = document.getElementById('email').value;
+			document.getElementById("product_nm_modal").textContent = document.getElementById('product_nm_val').value;
+			document.getElementById("address_modal").textContent = document.getElementById('address').value;
+			document.getElementById("message_modal").textContent = document.getElementById('message').value;
+			document.getElementById("inflow_channel_modal").textContent = document.getElementById('inflow_channel_val').value;
+			document.getElementById("detail_modal").textContent = document.getElementById('detail_val').value;
+			dialog.showModal();
+		});
+
+		// "Close" button closes the dialog
+		document.querySelector(".btn-close").addEventListener("click", () => {
+		dialog.close();
+		});
 	</script>	
 		
 </body>

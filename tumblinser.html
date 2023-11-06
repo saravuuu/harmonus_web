@@ -473,7 +473,6 @@
 			const switchOrderElements1 = container1.querySelectorAll('.switchOrder');
 			const container2 = document.getElementById('myDiv2');
 			const switchOrderElements2 = container2.querySelectorAll('.switchOrder');
-			console.log(innerWidth);
 			if ( innerWidth >= 768) {
 				// 순서 변경: Before -> After -> Image(Before) -> Image(After)
 				container1.appendChild(switchOrderElements1[0]);
@@ -500,7 +499,7 @@
 		}
 		// 페이지 로드 시와 창 크기 변경 시에 순서 변경 함수 호출
 		window.addEventListener('load', reorderElements);
-		window.addEventListener('resize', reorderElements, console.log('resize'));
+		window.addEventListener('resize', reorderElements);
 	</script>
 </body>
 </html>

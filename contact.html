@@ -444,7 +444,7 @@
 			document.getElementById("email_modal").textContent = email_val;
 			var product_nm_val = document.getElementById('product_nm_val').value;
 			document.getElementById("product_nm_modal").textContent = product_nm_val;
-			document.getElementById("address_modal").textContent = document.getElementById('address').value;
+			document.getElementById("address_modal").textContent = document.getElementById('address_val').value;
 			document.getElementById("message_modal").textContent = document.getElementById('message').value;
 			document.getElementById("inflow_channel_modal").textContent = document.getElementById('inflow_channel_val').value;
 			document.getElementById("detail_modal").textContent = document.getElementById('detail_val').value;
@@ -464,7 +464,7 @@
 				var rows = table.getElementsByTagName("tr");
 				switch (subject_val){
 					case '수리': 
-						rows[8].parentNode.removeChild(rows[8]);
+						rows[7].parentNode.removeChild(rows[7]);
 						break;
 					case '기타': 
 						rows[5].parentNode.removeChild(rows[5]);

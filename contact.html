@@ -351,33 +351,20 @@
 		})();
 	 </script>
 	<script>
-		// 알게된 경로 : 직접 입력이면 상세 입력 칸 생기게 함.
-		var inflowChannelVal = document.getElementById("inflow_channel_val");
-		var detail = document.getElementById("detail");
-		
-		inflowChannelVal.addEventListener("change", function() {
-			// 선택된 값을 가져옵니다.
-			var selectedValue = inflowChannelVal.value;
-		
-			if (selectedValue === "직접입력") {
-				detail.style.display = "block";
-			} else {	
-				detail.style.display = "none";
-			}
-		});
-	
-
 		// 문의 유형 선택이 변경될 때 이벤트를 감지하여 default text 설정
 		let subjectSelect = document.getElementById('subject');
 		let productNmSelect = document.getElementById('product_nm');
 		let inflowSelect = document.getElementById('inflow_channel');
 		let addressTextarea = document.getElementById('address');
 		let messageTextarea = document.getElementById('message');
-	
-		subjectSelect.addEventListener('change', function () {
+		var subject_val = document.getElementById('subject').value;
+		var product_nm_val = document.getElementById('product_nm_val').value;
+		var addressVal = document.getElementById('address_val').value;
+		var inflowChannelVal = document.getElementById("inflow_channel_val").value;
+
+		document.getElementById('subject').addEventListener('change', function () {
 			// 선택한 옵션에 따라 default text 설정
-			console.log(subjectSelect.value);
-			switch (subjectSelect.value) {
+			switch (document.getElementById('subject').value) {
 				case '견적/구입':
 					messageTextarea.placeholder = '견적/구입과 관련하여 궁금한 점을 편하게 적어주세요.';
 					productNmSelect.style.display = "block";
@@ -387,21 +374,45 @@
 				case '수리':
 					messageTextarea.placeholder = '제품의 상태를 자세히 적어주세요.';
 					productNmSelect.style.display = "block";
+					document.getElementById('product_nm_val').value = "";
 					inflowSelect.style.display = "none";
+					inflowChannelVal="";
 					addressTextarea.style.display = "block";
 					break;
 				case '기타':
 					messageTextarea.placeholder = '기타 문의 사항을 입력해주세요.';
 					productNmSelect.style.display = "none";
+					document.getElementById('product_nm_val').value = "";
 					inflowSelect.style.display = "block";
 					addressTextarea.style.display = "none";
+					addressVal = "";
 					break;
 				default:
 					messageTextarea.value = ''; // 선택한 옵션이 없는 경우 빈 문자열로 설정
 					inflowSelect.style.display = "none";
+					document.getElementById("inflow_channel_val").value="";
 					break;
 			}
+			subject_val = document.getElementById('subject').value;
 		});
+
+		// 알게된 경로 : 직접 입력이면 상세 입력 칸 생기게 함.
+		var detail = document.getElementById("detail");
+		
+		document.getElementById('inflow_channel').addEventListener("change", function() {
+			// 선택된 값을 가져옵니다.
+			inflowChannelVal = document.getElementById("inflow_channel_val").value;
+			//console.log("inflow_channel_val: "+inflowChannelVal);
+			if (inflowChannelVal === "직접입력") {
+				detail.style.display = "block";
+			} else {	
+				detail.style.display = "none";
+				detail.value = "";
+			}
+		});
+	
+
+		// 문의 유형 선택이 변경될 때 이벤트를 감지하여 default text 설정
 		
 
 		const sendEmail = () => {
@@ -412,12 +423,11 @@
 				phone : document.getElementById('phone').value,
 				email : document.getElementById('email').value,
 				product_nm : document.getElementById('product_nm_val').value,
-				address : document.getElementById('address_val').value,
+				address : addressVal,
 				message : document.getElementById('message').value,
-				inflow_channel : document.getElementById('inflow_channel_val').value,
+				inflow_channel : inflowChannelVal.value,
 				detail : document.getElementById('detail_val').value,
 			}
-			console.log(params);
 			emailjs.send('service_6210egl', 'template_miidnah', params).then(function(response){
 				//console.log('Success!', response.status, response.text);
 				// setStatus('success');
@@ -434,7 +444,6 @@
 
 		// "Show the confirm_dialog" button opens the dialog modally
 		document.querySelector(".confirm").addEventListener("click", () => {
-			var subject_val = document.getElementById('subject').value;
 			document.getElementById("subject_modal").textContent = subject_val;
 			var name_val = document.getElementById('name').value;
 			document.getElementById("name_modal").textContent = name_val;
@@ -442,26 +451,28 @@
 			document.getElementById("phone_modal").textContent = phone_val;
 			var email_val = document.getElementById('email').value;
 			document.getElementById("email_modal").textContent = email_val;
-			var product_nm_val = document.getElementById('product_nm_val').value;
+			product_nm_val = document.getElementById('product_nm_val').value;
 			document.getElementById("product_nm_modal").textContent = product_nm_val;
 			document.getElementById("address_modal").textContent = document.getElementById('address_val').value;
 			document.getElementById("message_modal").textContent = document.getElementById('message').value;
-			document.getElementById("inflow_channel_modal").textContent = document.getElementById('inflow_channel_val').value;
+			inflowChannelVal = document.getElementById("inflow_channel_val").value;
+			document.getElementById("inflow_channel_modal").textContent = inflowChannelVal;
 			document.getElementById("detail_modal").textContent = document.getElementById('detail_val').value;
 			var consentYN = document.getElementById('consentCheckbox');
-			if (!consentYN.checked){
-				alert("개인정보 제공에 동의해야 합니다.");
-      			return;
-			}
+			
 			if ((name_val === "" || email_val === "" || subject_val === "" || phone_val === "") || (subject_val !== "기타" && product_nm_val === "")) {
 				alert("모든 필수 입력 값을 입력하세요.");
 				return;
 			}
 			else{
+				if (!consentYN.checked){
+				alert("개인정보 제공에 동의해야 합니다.");
+      			return;
+				}
 				confirm_dialog.showModal();
 
-				var table = document.getElementById("confirm_table");
-				var rows = table.getElementsByTagName("tr");
+				let table = document.getElementById("confirm_table");
+				let rows = table.getElementsByTagName("tr");
 				switch (subject_val){
 					case '수리': 
 						rows[7].parentNode.removeChild(rows[7]);
@@ -473,7 +484,8 @@
 					case '견적/구입':
 						break;
 				}
-			}	
+			}
+				
 		});
 
 		// "Close" button closes the dialog

@@ -425,7 +425,7 @@
 				product_nm : document.getElementById('product_nm_val').value,
 				address : document.getElementById('address_val').value,
 				message : document.getElementById('message').value,
-				inflow_channel : inflowChannelVal.value,
+				inflow_channel : document.getElementById('inflow_channel_val').value,
 				detail : document.getElementById('detail_val').value,
 			}
 			emailjs.send('service_6210egl', 'template_miidnah', params).then(function(response){
